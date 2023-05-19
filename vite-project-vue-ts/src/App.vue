@@ -5,9 +5,6 @@ import MassaWeb3Test from "./components/Web3Test.vue";
 
 <template>
   <div>
-    <a target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
     <MassaWeb3Test />
   </div>
 </template>

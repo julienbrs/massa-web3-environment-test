@@ -11,7 +11,7 @@
       <WalletTest :deployerPrivateKey="deployer.secretKey" />
 
       <h2 style="margin-top: 50px">Smart Contract Interaction Test</h2>
-      <!-- <SCInteraction :deployerPrivateKey="deployer.secretKey" /> -->
+      <SCInteraction :deployerPrivateKey="deployer.secretKey" />
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@
 <script>
 import { ref, onMounted } from "vue";
 import WalletTest from "./WalletTest.vue";
-// import SCInteraction from "./SCTest.vue";
+import SCInteraction from "./SCTest.vue";
 import {
   ClientFactory,
   WalletClient,
@@ -32,7 +32,7 @@ const secretKey = "S12tw4YShWtjWfy7YBQ9Erbcg6DYgWnMgb5hGjn9hAKGtgrLNa7L";
 export default {
   components: {
     WalletTest,
-    // SCInteraction,
+    SCInteraction,
   },
   setup() {
     const deployer = ref(null);
