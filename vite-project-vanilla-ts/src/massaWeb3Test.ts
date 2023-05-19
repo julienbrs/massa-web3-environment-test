@@ -6,6 +6,19 @@ import {
   DefaultProviderUrls,
 } from "@massalabs/massa-web3";
 
+import { WalletTest } from "./walletTest";
+import { SCInteraction } from "./SCTest";
+
+declare global {
+  interface Window {
+    WalletTest: typeof WalletTest;
+    SCInteraction: typeof SCInteraction;
+  }
+}
+
+window.WalletTest = WalletTest;
+window.SCInteraction = SCInteraction;
+
 const secretKey = "S12tw4YShWtjWfy7YBQ9Erbcg6DYgWnMgb5hGjn9hAKGtgrLNa7L";
 
 let deployer: IAccount | null = null;
@@ -19,7 +32,7 @@ const init = async () => {
     baseAccount
   );
   deployer = testnetClient.wallet().getBaseAccount();
-  render(); // chaque fois que l'état change, on doit re-rendre
+  render();
 };
 
 init();
@@ -39,6 +52,12 @@ function render() {
             <p>Deployer Address: ${deployer.address}</p>
             <p>Deployer Public Key: ${deployer.publicKey}</p>
             <p>Deployer Private Key: ${deployer.secretKey}</p>
+
+            <h2 style={{ marginTop: "50px" }}>Wallet Test</h2>
+            <button onclick="WalletTest('${deployer.secretKey}')">Wallet Test</button>
+  
+            <h2 style={{ marginTop: "50px" }}>Smart Contract Interaction Test</h2>
+            <button onclick="SCInteraction('${deployer.secretKey}')">Smart Contract Interaction Test</button>
           </div>
           
         `
