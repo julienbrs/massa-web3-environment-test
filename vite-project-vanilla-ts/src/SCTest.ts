@@ -198,7 +198,7 @@ export async function SCInteraction(deployerPrivateKey: any) {
     const { isError, eventPoller, events }: IEventPollerResult =
       await withTimeoutRejection<IEventPollerResult>(
         pollAsyncEvents(web3Client, deploymentOperationId),
-        20000
+        30000
       );
 
     // stop polling
