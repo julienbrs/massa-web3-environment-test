@@ -148,9 +148,14 @@ export default function SCInteraction({ deployerPrivateKey }) {
 
       // deploy smart contract
       console.log("Running deployment of deployer smart contract....");
+      
       const response = await fetch("src/contracts/sc.wasm");
       const wasmBytes = await response.arrayBuffer();
+      console.log("wasmBytes =",wasmBytes)
       const wasmArray = new Uint8Array(wasmBytes);
+      console.log("wasmArray =",wasmArray)
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n")
+      console.log("response =",response)
       const deploymentOperationId = await deploySmartContracts(
         [
           {
