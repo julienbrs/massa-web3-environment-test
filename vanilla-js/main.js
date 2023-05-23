@@ -1,35 +1,35 @@
-
 import { WalletTest } from "./walletTest.js";
 import { SCInteraction } from "./SCTest.js";
+import * as massaWeb3 from "./node_modules/@massalabs/massa-web3/bundle.non.js";
+const massa = window.massa;
 
-  
-  window.WalletTest = WalletTest;
-  window.SCInteraction = SCInteraction;
-  
-  const secretKey = "S12tw4YShWtjWfy7YBQ9Erbcg6DYgWnMgb5hGjn9hAKGtgrLNa7L";
-  
-  let deployer = null;
-  
-  const init = async () => {
-    const baseAccount = await window.massa.WalletClient.getAccountFromSecretKey(secretKey);
-    console.log("baseAccount", baseAccount);
-  
-    const testnetClient = await window.massa.ClientFactory.createDefaultClient(
-        window.massa.DefaultProviderUrls.TESTNET,
-      true,
-      baseAccount
-    );
-    deployer = testnetClient.wallet().getBaseAccount();
-    render();
-  };
-  
-  init();
-  
-  function render() {
-    const appDiv = document.querySelector("#app");
-    if (!appDiv) return;
-  
-    appDiv.innerHTML = `
+window.WalletTest = WalletTest;
+window.SCInteraction = SCInteraction;
+
+const secretKey = "S12tw4YShWtjWfy7YBQ9Erbcg6DYgWnMgb5hGjn9hAKGtgrLNa7L";
+
+let deployer = null;
+
+const init = async () => {
+  const baseAccount = await massa.WalletClient.getAccountFromSecretKey(secretKey);
+  console.log("baseAccount", baseAccount);
+
+  const testnetClient = await massa.ClientFactory.createDefaultClient(
+    DefaultProviderUrls.TESTNET,
+    true,
+    baseAccount
+  );
+  deployer = testnetClient.wallet().getBaseAccount();
+  render();
+};
+
+init();
+
+function render() {
+  const appDiv = document.querySelector("#app");
+  if (!appDiv) return;
+
+  appDiv.innerHTML = `
       <div>
         <h1>Test Massa Web3</h1>
         ${
@@ -52,5 +52,4 @@ import { SCInteraction } from "./SCTest.js";
         }
       </div>
     `;
-  }
-  
+}
