@@ -23,7 +23,7 @@ const privateApi = "http://127.0.0.1:330342";
 // prend en props le deployerPrivateKey
 export default function WalletTest({ deployerPrivateKey }: any) {
   const receiverPrivateKey =
-    "S1ykLaxXyMnJoaWLYds8UntqKTamZ4vcxrZ1fdToR8WpWEpk3FC";
+    "S15FC5iqVhagLytnKZXyeR6qRQv5qCnf2MZRau9fMW7Ht8MfTry";
 
   const init = async () => {
     try {
@@ -64,6 +64,7 @@ export default function WalletTest({ deployerPrivateKey }: any) {
 
       // add a new wallet
       console.log("Adding a new Account ...");
+      console.log("receiverPrivateKey ", receiverPrivateKey);
       await web3Client.wallet().addSecretKeysToWallet([receiverPrivateKey]);
 
       // get wallet accounts
@@ -106,6 +107,8 @@ export default function WalletTest({ deployerPrivateKey }: any) {
           "P1c6udwDMs6CY2YDUm7phdrv6S5ACjTV5jW4Kriio44yDpRWK8t"
         );
       console.log("Signature verification: ", isVerified);
+
+      console.log("receiverAccount.address ", receiverAccount.address as string);
 
       // send from base account to receiver
       const txId = await web3Client.wallet().sendTransaction({

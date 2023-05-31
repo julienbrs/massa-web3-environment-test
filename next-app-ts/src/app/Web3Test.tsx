@@ -11,7 +11,7 @@ import {
   DefaultProviderUrls,
 } from "@massalabs/massa-web3";
 
-const secretKey = "S12tw4YShWtjWfy7YBQ9Erbcg6DYgWnMgb5hGjn9hAKGtgrLNa7L"
+const secretKey = "S12XuWmm5jULpJGXBnkeBsuiNmsGi2F4rMiTvriCzENxBR4Ev7vd"
 
 export default function MassaWeb3Test() {
   const [deployer, setDeployer] = useState<IAccount | null>(null);

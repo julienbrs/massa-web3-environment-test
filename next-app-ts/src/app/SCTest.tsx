@@ -79,9 +79,6 @@ const publicApi = "http://127.0.0.1:33035/";
 // const privateApi = "https://test.massa.net/api/v2";
 const privateApi = "http://127.0.0.1:330342";
 
-const receiverPrivateKey =
-  "S1ykLaxXyMnJoaWLYds8UntqKTamZ4vcxrZ1fdToR8WpWEpk3FC";
-
 const MASSA_EXEC_ERROR = "massa_execution_error";
 
 interface IEventPollerResult {
@@ -253,8 +250,9 @@ export default function SCInteraction({ deployerPrivateKey }: any) {
 
       // =========================================
       // make a smart contract call: delete the music album
-      console.log("Calling a set function on the deployed smart contract...");
+      console.log("Calling a set function on the deployed smart contract to delete album...");
       const deleteMusicAlbumArgs = new Args().addString("1");
+      console.log("args serialized: ", deleteMusicAlbumArgs.serialize());
       const deleteMusicAlbumCallOperationId = await web3Client
         .smartContracts()
         .callSmartContract({
@@ -274,7 +272,7 @@ export default function SCInteraction({ deployerPrivateKey }: any) {
 
       // =========================================
       // make a smart contract call: create a new music album
-      console.log(`Calling a set function on the deployed smart contract...`);
+      console.log(`Calling a set function on the deployed smart contract to create album...`);
       const newMusicAlbum = new MusicAlbum(
         "1",
         "CD",
