@@ -1,6 +1,7 @@
 "use client"
 import WalletTest from "./WalletTest";
 import SCInteraction from "./SCTest";
+import GenerateWallet from "./GenerateWallet";
 
 import { useEffect, useState } from "react";
 import {
@@ -46,6 +47,9 @@ export default function MassaWeb3Test() {
 
           <h2 style={{ marginTop: "50px" }}>Smart Contract Interaction Test</h2>
           <SCInteraction deployerPrivateKey= {deployer.secretKey} />
+
+          <h2 style={{ marginTop: "50px" }}>Generate Wallet Test</h2>
+          <GenerateWallet deployerPrivateKey= {deployer.secretKey} />
         </div>
       )}
     </div>
