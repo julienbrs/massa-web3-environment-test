@@ -16,6 +16,7 @@ const secretKey = "S12XuWmm5jULpJGXBnkeBsuiNmsGi2F4rMiTvriCzENxBR4Ev7vd"
 
 export default function MassaWeb3Test() {
   const [deployer, setDeployer] = useState<IAccount | null>(null);
+  const [length, setLength] = useState<number>(0);
 
   const init = async () => {
     const baseAccount = await WalletClient.getAccountFromSecretKey(secretKey);
@@ -26,6 +27,7 @@ export default function MassaWeb3Test() {
       baseAccount
     );
     setDeployer(testnetClient.wallet().getBaseAccount());
+    const addressObj = testnetClient.wallet().getBaseAccount();
   };
 
   useEffect(() => {
@@ -41,6 +43,11 @@ export default function MassaWeb3Test() {
           <p>Deployer Address: {deployer.address}</p>
           <p>Deployer Public Key: {deployer.publicKey}</p>
           <p>Deployer Private Key: {deployer.secretKey}</p>
+          <p>length address: {deployer.address?.length}</p>
+          <p>length public key: {deployer.publicKey?.length}</p>
+          <p>length private key: {deployer.secretKey?.length}</p>
+          <p>Creathed in thread: {deployer.createdInThread} </p>
+
 
           <h2 style={{ marginTop: "50px" }}>Wallet Test</h2>
           <WalletTest deployerPrivateKey= {deployer.secretKey} />
