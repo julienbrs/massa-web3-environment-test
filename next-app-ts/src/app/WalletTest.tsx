@@ -88,14 +88,8 @@ export default function WalletTest({ deployerPrivateKey }: any) {
       // sign a random wallet message using account2
       const signedMessage = await web3Client
         .wallet()
-        .signMessage("hello there", receiverAccount.address as string);
+        .signMessage("hello world", receiverAccount.address as string);
       console.log("Wallet sender signing a message... ", signedMessage);
-
-      // verify a signature
-      const signature: ISignature = {
-        base58Encoded:
-          "B1Gy7pAstdqzjghn8fdLDtn1qLUhsxWu4x1j8N4W9wxa3hTPNsFyPeFkSkfEjVCRnCAE9jrBjernGyoDL1yt2Wgafb8uu",
-      };
 
       const message = "hello world";
 
@@ -103,8 +97,8 @@ export default function WalletTest({ deployerPrivateKey }: any) {
         .wallet()
         .verifySignature(
           message,
-          signature,
-          "P1c6udwDMs6CY2YDUm7phdrv6S5ACjTV5jW4Kriio44yDpRWK8t"
+          signedMessage,
+          "P12wQYA51YVmLLeYxitGvM3NiYHkbpzgFSCXGiYsrZgaqhB2FQdL"
         );
       console.log("Signature verification: ", isVerified);
 
